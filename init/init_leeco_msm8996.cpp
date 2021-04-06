@@ -104,6 +104,13 @@ void check_device()
     }
 }
 
+void init_fluid_stuff(const std::string& device) {
+    if (std::find(device, "le_x2") || device == "") {
+        property_override("ro.fluid.cpu", "Snapdragon 820");
+	property_override("ro.fluid.maintainer", "Kelvium");
+    }
+}
+
 void vendor_load_properties()
 {
     LOG(INFO) << "Loading vendor specific properties";
@@ -187,6 +194,7 @@ void vendor_load_properties()
     }
 
     check_device();
+    init_fluid_stuff(device);
 
     property_override("dalvik.vm.heapstartsize", heapstartsize);
     property_override("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
