@@ -105,7 +105,7 @@ void check_device()
 }
 
 void init_fluid_stuff(const std::string& device) {
-    if (std::find(device, "le_x2") || device == "") {
+    if (device.find("le_x2") || device == "") {
         property_override("ro.fluid.cpu", "Snapdragon 820");
 	property_override("ro.fluid.maintainer", "Kelvium");
     }
